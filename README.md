@@ -12,3 +12,5 @@ This repository contains homeworks for Design and Development of Information Sys
 ![push-proof-image](push-proof.png)
 
 ## Задание 2
+Папка `fullstack_project` \
+Чтобы запустить сборки images и запустить приложение, выполните `docker-compose up`
