@@ -1,0 +1,34 @@
+services:
+  puller:
+    container_name: puller
+    image: puller-image
+    volumes:
+      - ./ansible:/ansible
+      - common-dir:/common
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - internal-net
+  
+  executor:
+    container_name: executor
+    image: executor-image
+    depends_on:
+      - puller
+    volumes:
+      - ./ansible:/ansible
+      - common-dir:/common
+      - /var/run/docker.sock:/var/run/docker.sock
+    expose:
+      - "8000:8080"
+    networks:
+      - internal-net
+
+networks:
+  internal-net:
+    name: internal-net
+    external: true
+
+volumes:
+  common-dir:
+    external: true
+

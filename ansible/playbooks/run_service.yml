@@ -1,0 +1,20 @@
+---
+- name: Run Sample Django App
+  hosts: localhost
+  gather_facts: False
+  
+  tasks:
+    - name: Docker Compose is installed
+      ansible.builtin.package:
+        name: docker-compose
+        state: present
+
+    - name: Set enviroments
+      shell: |
+        cd /python-app
+        . /python-app/build_docker_env.sh
+
+    - name: Run App
+      shell: |
+        cd /python-app
+        docker-compose up -d
