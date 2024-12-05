@@ -1,0 +1,11 @@
+---
+- name: Fetch Sample Django App
+  hosts: localhost
+  gather_facts: False
+  
+  tasks:
+    - name: Fetch App
+      shell: |
+        cp /common/python-app /python-app -r
+        ls -a /python-app
+

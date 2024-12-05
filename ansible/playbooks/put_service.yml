@@ -1,0 +1,14 @@
+---
+- name: Put Sample Django App
+  hosts: localhost
+  gather_facts: False
+  
+  tasks:
+    - name: Put App
+      shell: |
+        cd /
+        git clone https://github.com/jambonrose/python-web-dev-21-2.git
+        mv python-web-dev-21-2 /python-app
+        cp /python-app /common -r
+        ls -a /python-app
+
