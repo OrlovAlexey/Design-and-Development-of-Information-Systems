@@ -1,16 +1,18 @@
-# Design-and-Development-of-Information-Systems
-This repository contains homeworks for Design and Development of Information Systems in SberTech
+# Task 5
 
-## Задание 1
-
-Папка `my_docker_image` \
-Чтобы запустить сборки image, выполните `make build` \
-Чтобы запушить готовый образ, выполните `make push` \
-Чтобы запустить контейнер с готового образа, выполните `make run`
-
-У меня не получилось залогиниться в докерхабе из-за странной ошибки, но запушить контейнер получилось \
-![push-proof-image](push-proof.png)
-
-## Задание 2
+## kubernetes
 Папка `fullstack_project` \
-Чтобы запустить сборки images и запустить приложение, выполните `docker-compose up`
+Перед сборкой образов лучше сделать `eval $(minikube docker-env)`, чтобы установить переменные окружения. \
+Чтобы запустить сборки images, выполнить `docker-compose up` и как только образы соберутся остановить. \
+Далее выполнить `minikube start && kubectl config use-context minikube`. \
+Отслеживать можно в `minikube dashboard`. \
+Далее запустить кубер командой `kubectl apply -f kubemanifests.yaml`. \
+Также нужно прокинуть туннель `minikube tunnel`, чтобы можно было с хоста зайти постучаться. 
+
+## Скрины
+Сервисы в дашборде: 
+![minikube dashboard first](img/kube.png "minikube dashboard")
+![minikube dashboard second](img/kube2.png "minikube dashboard")
+
+Curl в работающее приложение:
+![curl](img/curl.png "curl localhost")
